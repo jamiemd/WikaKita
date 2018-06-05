@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import SignUp from "./components/SignUp";
+import SignUp from "./Components/SignUp";
 import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends Component {

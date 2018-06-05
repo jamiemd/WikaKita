@@ -1,16 +1,11 @@
 const passport = require("passport");
 const User = require("../models/UserModel");
+const app = require("./app");
 
 module.exports = app => {
-  // test
-  app.post("/notes", (req, res) => {
-    // You'll create your note here.
-    console.log(req.body);
-    res.send("Hello");
-  });
-
   // signup
   app.post("/api/signup", function(req, res) {
+    console.log("signup called");
     const newUser = new User(req.body);
     //check the user contains all required data
     if (!newUser.username || !newUser.password || !newUser.email) {

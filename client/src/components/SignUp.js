@@ -1,66 +1,52 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { reduxForm, Field } from "redux-form";
+import { signup } from "../Actions/auth";
 import "./SignUp.css";
 
 class SignUp extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: "",
-      email: "",
-      password: ""
-    };
-  }
-
-  handleUsernameChange = e => {
-    this.setState({ username: e.target.value });
+  renderAlert = () => {
+    if (!this.props.error) return null;
+    return <h3>{this.props.error}</h3>;
   };
 
-  handleEmailChange = e => {
-    this.setState({ email: e.target.value });
-  };
-
-  handlePasswordChange = e => {
-    this.setState({ password: e.target.value });
-  };
-
-  handleFormSubmit = e => {
-    e.preventDefault();
+  handleFormSubmit = ({ username, email, password }) => {
     console.log("form submitted");
+    this.props.signup(username, email, password);
   };
 
   render() {
     return (
       <div>
-        <form className="signup-container" onSubmit={this.handleFormSubmit}>
-          <div>
+        <form onSubmit={this.handleFormSubmit}>
+          <fieldset className="signup-container">
             <label>Username</label>
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.handleUsernameChange}
-            />
-          </div>
-          <div>
+            <Field name="username" component="input" type="text" />
             <label>Email</label>
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.handleEmailChange}
-            />
-          </div>
-          <div>
+            <Field name="email" component="input" type="email" />
             <label>Password</label>
-            <input
-              type="text"
-              value={this.state.password}
-              onChange={this.handlePasswordChange}
-            />
-          </div>
-          <button type="submit">Sign Up</button>
+            <Field name="password" component="input" type="password" />
+            <button type="submit">Sign Up</button>
+            {this.renderAlert()}
+          </fieldset>
         </form>
       </div>
     );
   }
 }
 
-export default SignUp;
+const mapStateToProps = state => {
+  return {
+    error: state.auth.error
+  };
+};
+
+SignUp = connect(
+  mapStateToProps,
+  { signup }
+)(SignUp);
+
+export default reduxForm({
+  form: "signup",
+  fields: ["username", "email", "password"]
+})(SignUp);
