@@ -25,9 +25,9 @@ export const signup = (username, email, password) => {
           type: USER_REGISTERED
         });
       })
-      .catch(err => {
-        console.log("err", err);
-        dispatch(authError("Failed to register user"));
+      .catch(error => {
+        console.log("err", error.response.data.error);
+        dispatch(authError(error.response.data.error));
       });
   };
 };

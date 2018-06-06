@@ -2,10 +2,15 @@ const passport = require("passport");
 const User = require("../models/UserModel");
 const app = require("../server");
 
+const STATUS_USER_ERROR = 422;
+const STATUS_SERVER_ERROR = 500;
+const STATUS_OKAY = 200;
+const STATUS_NOT_FOUND = 404;
+
 module.exports = app => {
   // signup
   app.post("/api/signup", function(req, res) {
-    console.log("signup called");
+    console.log("req.body", req.body);
     const newUser = new User(req.body);
     //check the user contains all required data
     if (!newUser.username || !newUser.password || !newUser.email) {
@@ -17,16 +22,13 @@ module.exports = app => {
         if (err.name === "BulkWriteError") {
           res
             .status(STATUS_USER_ERROR)
-            .json({ error: "Username already exists.", err });
+            .json({ error: "Username already exists." });
         } else if (err.name === "ValidationError") {
           res.status(STATUS_USER_ERROR).json({
-            error: "Password must be at least 8 characters.",
-            err
+            error: "Password must be at least 8 characters."
           });
         } else {
-          res
-            .status(STATUS_USER_ERROR)
-            .json({ error: "Error while adding", err });
+          res.status(STATUS_USER_ERROR).json({ error: "Error while adding" });
         }
       } else {
         res.status(STATUS_OKAY).json(user);
