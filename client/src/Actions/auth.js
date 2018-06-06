@@ -6,7 +6,6 @@ export const USER_REGISTERED = "USER_REGISTERED";
 export const USER_AUTHENTICATED = "USER_AUTHENTICATED";
 export const USER_UNAUTHENTICATED = "USER_UNAUTHENTICATED";
 export const AUTHENTICATION_ERROR = "AUTHENTICATION_ERROR";
-export const CHECK_IF_AUTHENTICATED = "CHECK_IF_AUTHENTICATED";
 
 export const authError = error => {
   return {
@@ -17,49 +16,51 @@ export const authError = error => {
 
 export const signup = (username, email, password) => {
   return dispatch => {
+    console.log("action signup called");
     axios
       .post(`${ROOT_URL}/signup`, { username, email, password })
       .then(res => {
+        console.log("res", res);
         dispatch({
           type: USER_REGISTERED
         });
       })
       .catch(err => {
-        console.log(err);
+        console.log("err", err);
         dispatch(authError("Failed to register user"));
       });
   };
 };
 
-export const signin = (username, password, history) => {
-  console.log("history", history);
-  return dispatch => {
-    axios
-      .post(`${ROOT_URL}/login`, { username, password })
-      .then(res => {
-        dispatch({
-          type: USER_AUTHENTICATED
-        });
-        history.push("/home");
-      })
-      .catch(() => {
-        dispatch(authError("Incorrect email/password combo"));
-      });
-  };
-};
+// export const signin = (username, password, history) => {
+//   console.log("history", history);
+//   return dispatch => {
+//     axios
+//       .post(`${ROOT_URL}/signin`, { username, password })
+//       .then(res => {
+//         dispatch({
+//           type: USER_AUTHENTICATED
+//         });
+//         history.push("/home");
+//       })
+//       .catch(() => {
+//         dispatch(authError("Incorrect email/password combo"));
+//       });
+//   };
+// };
 
-export const signout = history => {
-  return dispatch => {
-    axios
-      .post(`${ROOT_URL}/logout`, { history })
-      .then(() => {
-        dispatch({
-          type: USER_UNAUTHENTICATED
-        });
-        history.push("/");
-      })
-      .catch(() => {
-        dispatch(authError("Failed to log you out"));
-      });
-  };
-};
+// export const signout = history => {
+//   return dispatch => {
+//     axios
+//       .post(`${ROOT_URL}/signout`, { history })
+//       .then(() => {
+//         dispatch({
+//           type: USER_UNAUTHENTICATED
+//         });
+//         history.push("/");
+//       })
+//       .catch(() => {
+//         dispatch(authError("Failed to log you out"));
+//       });
+//   };
+// };
