@@ -26,41 +26,41 @@ export const signup = (username, email, password) => {
         });
       })
       .catch(error => {
-        console.log("err", error.response.data.error);
+        console.log("error", error);
         dispatch(authError(error.response.data.error));
       });
   };
 };
 
-// export const signin = (username, password, history) => {
-//   console.log("history", history);
-//   return dispatch => {
-//     axios
-//       .post(`${ROOT_URL}/signin`, { username, password })
-//       .then(res => {
-//         dispatch({
-//           type: USER_AUTHENTICATED
-//         });
-//         history.push("/home");
-//       })
-//       .catch(() => {
-//         dispatch(authError("Incorrect email/password combo"));
-//       });
-//   };
-// };
+export const login = (username, password, history) => {
+  console.log("history", history);
+  return dispatch => {
+    axios
+      .post(`${ROOT_URL}/login`, { username, password })
+      .then(res => {
+        dispatch({
+          type: USER_AUTHENTICATED
+        });
+        history.push("/home");
+      })
+      .catch(() => {
+        dispatch(authError("Incorrect email/password combo"));
+      });
+  };
+};
 
-// export const signout = history => {
-//   return dispatch => {
-//     axios
-//       .post(`${ROOT_URL}/signout`, { history })
-//       .then(() => {
-//         dispatch({
-//           type: USER_UNAUTHENTICATED
-//         });
-//         history.push("/");
-//       })
-//       .catch(() => {
-//         dispatch(authError("Failed to log you out"));
-//       });
-//   };
-// };
+export const signout = history => {
+  return dispatch => {
+    axios
+      .post(`${ROOT_URL}/signout`, { history })
+      .then(() => {
+        dispatch({
+          type: USER_UNAUTHENTICATED
+        });
+        history.push("/");
+      })
+      .catch(() => {
+        dispatch(authError("Failed to log you out"));
+      });
+  };
+};

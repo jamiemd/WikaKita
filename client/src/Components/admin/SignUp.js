@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
-import { signup } from "../Actions/auth";
-import "./SignUp.css";
+import { signup } from "../../Actions/auth";
 
 class SignUpForm extends Component {
   renderAlert = () => {
@@ -43,7 +42,8 @@ class SignUpForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    error: state.auth.error
+    error: state.auth.error,
+    registered: state.auth.registered
   };
 };
 
