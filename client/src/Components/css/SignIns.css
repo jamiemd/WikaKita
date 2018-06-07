@@ -1,0 +1,14 @@
+.signup-container {
+  padding: 200px;
+}
+
+.signins {
+  display: flex;
+  justify-content: right;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}

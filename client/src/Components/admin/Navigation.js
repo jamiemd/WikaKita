@@ -1,22 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import "../css/SignIns.css";
 
 class Navigation extends Component {
   render() {
-    if (!this.props.authenticated) {
-      return (
+    return (
+      <div className="nav-container">
         <Link className="headerLink" to="/">
           WikaKita
         </Link>
-      );
-    } else {
-      return (
-        <Link className="headerLink" to="/home">
-          WikaKita
-        </Link>
-      );
-    }
+        <div className="signins">
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Sign Up</Link>
+        </div>
+      </div>
+    );
   }
 }
 

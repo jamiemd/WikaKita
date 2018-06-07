@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Flashcards from "./Flashcards";
 import { connect } from "react-redux";
+import "../css/FlashcardContainer.css";
+
 import {
   getCards,
   nextCard,
@@ -32,7 +34,6 @@ class FlashcardContainer extends Component {
               X
             </Link>
           </div>
-          <ResultsPage />
         </div>
       );
     }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { resetCardState, correctAnswerCount } from "../../Actions/flashcards";
+import "../css/Results.css";
 
 class ResultsPage extends Component {
   handleHomeClick = e => {

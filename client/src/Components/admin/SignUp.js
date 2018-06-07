@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import { signup } from "../../Actions/auth";
+import "../css/SignIns.css";
 
 class SignUpForm extends Component {
   renderAlert = () => {

@@ -5,7 +5,8 @@ import {
   showAnswer,
   updateBucket,
   correctAnswerCount
-} from "../Actions/flashcards";
+} from "../../Actions/flashcards";
+import "../css/Flashcards.css";
 
 class Flashcards extends Component {
   handleNoButtonClick = e => {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Home extends Component {
   render() {
-    return <div>hello</div>;
+    return <div>Welcome to WikaKita</div>;
   }
 }
 

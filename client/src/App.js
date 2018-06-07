@@ -5,6 +5,7 @@ import Home from "./Components/admin/Home";
 import SignUp from "./Components/admin/SignUp";
 import Login from "./Components/admin/Login";
 import Navigation from "./Components/admin/Navigation";
+import Flashcards from "./Components/flashcards/FlashcardContainer";
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/flashcards" component={Flashcards} />
         </div>
       </BrowserRouter>
     );
