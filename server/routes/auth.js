@@ -36,51 +36,47 @@ module.exports = app => {
   });
 
   // login
-  app.post(
-    "/api/login",
-    passport.authenticate("jwt", { session: false }),
-    function(req, res) {
-      if (!req.body.username || !req.body.password) {
-        res.status(400).json({ error: "Missing required information" });
-        return;
-      }
-      User.findOne(
-        {
-          $or: [{ email: req.body.email }, { username: req.body.username }]
-        },
-        function(err, user) {
-          console.log("err:", err);
-          if (err) throw err;
-          if (!user) {
-            res.json({
-              success: false,
-              msg: "Authentication failed. User not found."
-            });
-          } else {
-            console.log(user.password, req.body.password);
-            user.comparePassword(req.body.password, function(err, isMatch) {
-              console.log(isMatch);
-              if (isMatch && !err) {
-                var token = jwt.encode(user, "wikakita");
-                res.json({
-                  success: true,
-                  token: "JWT " + token,
-                  user: req.body.username
-                });
-              } else {
-                res.json({
-                  success: false,
-                  msg:
-                    "Authentication failed. Username or password is incorrect. ",
-                  err
-                });
-              }
-            });
-          }
-        }
-      );
+  app.post("/api/login", function(req, res) {
+    if (!req.body.username || !req.body.password) {
+      res.status(400).json({ error: "Missing required information" });
+      return;
     }
-  );
+    User.findOne(
+      {
+        $or: [{ email: req.body.email }, { username: req.body.username }]
+      },
+      function(err, user) {
+        console.log("err:", err);
+        if (err) throw err;
+        if (!user) {
+          res.json({
+            success: false,
+            msg: "Authentication failed. User not found."
+          });
+        } else {
+          console.log(user.password, req.body.password);
+          user.comparePassword(req.body.password, function(err, isMatch) {
+            console.log(isMatch);
+            if (isMatch && !err) {
+              var token = jwt.encode(user, "wikakita");
+              res.json({
+                success: true,
+                token: "JWT " + token,
+                user: req.body.username
+              });
+            } else {
+              res.json({
+                success: false,
+                msg:
+                  "Authentication failed. Username or password is incorrect. ",
+                err
+              });
+            }
+          });
+        }
+      }
+    );
+  });
 
   // logout
   app.get(

@@ -9,10 +9,10 @@ class LoginForm extends Component {
     return <h3>{this.props.error}</h3>;
   };
 
-  handleFormSubmit = ({ username, email, password }) => {
-    console.log(username, email, password);
+  handleFormSubmit = ({ username, password }) => {
+    console.log(username, password);
     const { history } = this.props;
-    this.props.login(username, email, password, history);
+    this.props.login(username, password, history);
   };
 
   render() {
