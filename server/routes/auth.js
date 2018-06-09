@@ -83,7 +83,6 @@ module.exports = app => {
     "/api/logout",
     passport.authenticate("jwt", { session: false }),
     function(req, res) {
-      console.log("I am Logout");
       req.logout();
       res.status(200).redirect("/");
     }

@@ -42,7 +42,7 @@ export const login = (username, password, history) => {
         dispatch({
           type: USER_AUTHENTICATED
         });
-        history.push("/home");
+        history.push("/");
       })
       .catch(error => {
         console.log("error", error);
