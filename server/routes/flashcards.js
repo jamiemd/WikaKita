@@ -1,17 +1,18 @@
 const passport = require("passport");
 const jwt = require("jwt-simple");
-const Flashcards = require("./flashcards");
+const Flashcards = require("../models/FlashcardModel");
 
 const routes = app => {
   // get all flashcards
   app.get("/api/flashcards", (req, res) => {
-    let currentDate = new Date();
+    // let currentDate = new Date();
+    console.log("entered flashcards");
     Flashcards.find({})
-      .find({ ReviewDate: { $lte: currentDate } })
-      .then(function(flashcards) {
+      // .find({ ReviewDate: { $lte: currentDate } })
+      .then(flashcards => {
         res.status(200).json(flashcards);
       })
-      .catch(function() {
+      .catch(() => {
         res
           .status(500)
           .json({ error: "The information could not be retrieved" });
@@ -20,10 +21,10 @@ const routes = app => {
 
   app.get("/api/getStats", (req, res) => {
     Flashcards.find({})
-      .then(function(flashcards) {
+      .then(flashcards => {
         res.status(200).json(flashcards);
       })
-      .catch(function() {
+      .catch(() => {
         res
           .status(500)
           .json({ error: "The information could not be retrieved" });
@@ -55,10 +56,10 @@ const routes = app => {
       currentBucket: newBucket,
       ReviewDate: newDate
     })
-      .then(function(bucket) {
+      .then(bucket => {
         res.status(200).json(bucket);
       })
-      .catch(function() {
+      .catch(() => {
         res.status(500).json({ error: "The information could not be updated" });
       });
   });

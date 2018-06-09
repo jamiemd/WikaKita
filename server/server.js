@@ -20,14 +20,15 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-const User = require("./models/UserModel");
 const Auth = require("./routes/auth.js");
 Auth(app);
+const Flashcards = require("./routes/flashcards");
+Flashcards(app);
 
 const port = 8000;
 
 mongoose.Promise = global.Promise;
-const connect = mongoose.connect("mongodb://localhost/test");
+mongoose.connect("mongodb://localhost/test");
 
 app.listen(port, () => {
   console.log("We are live on " + port);

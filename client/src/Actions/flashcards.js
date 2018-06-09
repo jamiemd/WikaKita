@@ -13,13 +13,18 @@ const ROOT_URL = "http://localhost:8000/api";
 // get flashcards from server
 export const getCards = () => {
   return dispatch => {
-    const apiUrl = `${ROOT_URL}/flashcards`;
-    axios.get(apiUrl).then(response => {
-      dispatch({
-        type: GET_CARDS,
-        payload: response.data
+    axios
+      .get(`${ROOT_URL}/flashcards`)
+      .then(res => {
+        console.log("res", res);
+        dispatch({
+          type: GET_CARDS,
+          payload: res.data
+        });
+      })
+      .catch(error => {
+        console.log("error", error.response.data);
       });
-    });
   };
 };
 

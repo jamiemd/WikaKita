@@ -2,8 +2,8 @@ const fs = require("fs"); // read files on computer
 
 let savedCards = null;
 
-const Flashcards = require("./flashcards.js");
-const User = require("./user.js");
+const Flashcards = require("./models/FlashcardModel.js");
+const User = require("./models/UserModel.js");
 
 Flashcards.remove({}, function(err) {
   console.log("flashcard collection removed");
@@ -16,7 +16,7 @@ User.remove({}, function(err) {
 // read flashcards from json file
 const readCards = () => {
   if (!savedCards) {
-    const contents = fs.readFileSync("../flashcards.json", "utf8");
+    const contents = fs.readFileSync("./flashcards.json", "utf8");
     savedCards = JSON.parse(contents); // turns file into object
   }
   return savedCards;
