@@ -10,13 +10,12 @@ class LoginForm extends Component {
   };
 
   handleFormSubmit = ({ username, password }) => {
-    console.log(username, password);
     const { history } = this.props;
     this.props.login(username, password, history);
   };
 
   render() {
-    console.log("this.props", this.props);
+    // console.log("this.props", this.props);
     const { handleSubmit } = this.props;
 
     return (
@@ -51,5 +50,5 @@ LoginForm = connect(
 
 export default reduxForm({
   form: "login",
-  fields: ["username", "email", "password"]
+  fields: ["username", "password"]
 })(LoginForm);

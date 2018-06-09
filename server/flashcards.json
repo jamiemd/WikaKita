@@ -1,0 +1,32 @@
+[
+  {
+    "english": "hello",
+    "tagalog": "kamusta",
+    "currentBucket": 1
+  },
+  {
+    "english": "name",
+    "tagalog": "pangalan",
+    "currentBucket": 1
+  },
+  {
+    "english": "smart",
+    "tagalog": "matalino",
+    "currentBucket": 1
+  },
+  {
+    "english": "beautiful",
+    "tagalog": "maganda",
+    "currentBucket": 1
+  },
+  {
+    "english": "handsome",
+    "tagalog": "guapo",
+    "currentBucket": 1
+  },
+  {
+    "english": "tomorrow",
+    "tagalog": "bukas",
+    "currentBucket": 1
+  }
+]

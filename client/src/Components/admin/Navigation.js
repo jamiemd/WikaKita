@@ -5,14 +5,21 @@ import "../css/SignIns.css";
 
 class Navigation extends Component {
   render() {
+    console.log("this.props", this.props);
     return (
       <div className="nav-container">
         <Link className="headerLink" to="/">
           WikaKita
         </Link>
         <div className="signins">
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          {this.props.authenticated ? (
+            <Link to="/">Logout</Link>
+          ) : (
+            <div>
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Sign Up</Link>
+            </div>
+          )}
         </div>
       </div>
     );
