@@ -1,4 +1,5 @@
 import {
+  USER_REGISTERED,
   USER_AUTHENTICATED,
   USER_UNAUTHENTICATED,
   AUTHENTICATION_ERROR
@@ -6,6 +7,8 @@ import {
 
 export default (auth = {}, action) => {
   switch (action.type) {
+    case USER_REGISTERED:
+      return { ...auth, registered: true };
     case USER_AUTHENTICATED:
       return { ...auth, authenticated: true };
     case USER_UNAUTHENTICATED:

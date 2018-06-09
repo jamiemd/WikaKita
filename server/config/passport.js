@@ -1,4 +1,11 @@
-module.exports = server => {
+const passportJWT = require("passport-jwt");
+const ExtractJwt = passportJWT.ExtractJwt;
+const JwtStrategy = passportJWT.Strategy;
+
+const User = require("../models/UserModel");
+
+module.exports = passport => {
+  const opts = {};
   opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
   opts.secretOrKey = "secret";
   passport.use(
@@ -11,7 +18,6 @@ module.exports = server => {
           return done(null, user);
         } else {
           return done(null, false);
-          // or you could create a new account
         }
       });
     })

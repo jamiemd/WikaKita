@@ -63,7 +63,7 @@ class FlashcardContainer extends Component {
         </div>
         <div className="overdueText">There are no overdue cards</div>
         <div className="homeButtonContainer">
-          <Link className="homeButton" to="/home">
+          <Link className="homeButton" to="/">
             Home
           </Link>
         </div>

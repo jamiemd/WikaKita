@@ -11,7 +11,6 @@ class SignUpForm extends Component {
   };
 
   handleFormSubmit = ({ username, email, password }) => {
-    console.log(username, email, password);
     const { history } = this.props;
     this.props.signup(username, email, password, history);
   };
