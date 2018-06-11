@@ -2,14 +2,14 @@ const passport = require("passport");
 const jwt = require("jwt-simple");
 const Flashcards = require("../models/FlashcardModel");
 
-const routes = app => {
+module.exports = app => {
   // get all flashcards
   app.get("/api/flashcards", (req, res) => {
     // let currentDate = new Date();
-    console.log("entered flashcards");
     Flashcards.find({})
       // .find({ ReviewDate: { $lte: currentDate } })
       .then(flashcards => {
+        console.log("flashcards", flashcards);
         res.status(200).json(flashcards);
       })
       .catch(() => {
@@ -64,5 +64,3 @@ const routes = app => {
       });
   });
 };
-
-module.exports = routes;

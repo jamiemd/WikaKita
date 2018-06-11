@@ -96,4 +96,15 @@ module.exports = app => {
   //     res.send(req.user.profile);
   //   }
   // );
+
+  // get all users
+  app.get("/api/users", (req, res) => {
+    User.find({}, (err, users) => {
+      if (err) {
+        sendUserError("500", res);
+        return;
+      }
+      res.json(users);
+    });
+  });
 };

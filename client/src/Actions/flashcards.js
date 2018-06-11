@@ -23,7 +23,7 @@ export const getCards = () => {
         });
       })
       .catch(error => {
-        console.log("error", error.response.data);
+        console.log("error", error);
       });
   };
 };

@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/wikikita");
+
 const FlashcardSchema = new mongoose.Schema({
   english: {
     type: String,
@@ -15,9 +18,9 @@ const FlashcardSchema = new mongoose.Schema({
   },
   ReviewDate: {
     type: Date,
-    required: true,
+    required: false,
     default: Date.now
   }
 });
 
-module.exports = mongoose.model("Flashcard", FlashcardSchema);
+module.exports = mongoose.model("Flashcards", FlashcardSchema);

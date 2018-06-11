@@ -19,6 +19,10 @@ class FlashcardContainer extends Component {
   }
 
   render() {
+    // if no overdue cards, show no data
+    // if overdue cards, show current flashcard
+    // if finished show results page
+
     if (
       this.props.flashcards.data === undefined ||
       this.props.flashcards.data === 0
