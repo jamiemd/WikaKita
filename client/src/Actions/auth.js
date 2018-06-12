@@ -36,13 +36,14 @@ export const signup = (username, email, password, history) => {
 export const login = (username, password, history) => {
   return dispatch => {
     axios
-      .post(`${ROOT_URL}/login`, { username, password })
+      .post(`${ROOT_URL}/login`, { username, password, history })
       .then(res => {
         console.log("res", res);
         dispatch({
           type: USER_AUTHENTICATED
         });
         history.push("/");
+        localStorage.setItem("jwt", res.data.token);
       })
       .catch(error => {
         console.log("error", error);
@@ -50,19 +51,19 @@ export const login = (username, password, history) => {
   };
 };
 
-export const logout = history => {
+export const logout = () => {
   return dispatch => {
+    localStorage.removeItem("jwt");
     axios
-      .post(`${ROOT_URL}/logout`, { history })
+      .get(`${ROOT_URL}/logout`)
       .then(res => {
         console.log("res", res);
         dispatch({
           type: USER_UNAUTHENTICATED
         });
-        history.push("/");
       })
       .catch(error => {
-        console.log("error", error);
+        console.log("error", error.response);
         dispatch(authError("Failed to log you out"));
       });
   };

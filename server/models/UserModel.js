@@ -23,7 +23,6 @@ const UserModel = new mongoose.Schema({
 });
 
 UserModel.pre("save", function(next) {
-  console.log("pre called");
   var user = this;
   if (this.isModified("password") || this.isNew) {
     bcrypt.genSalt(10, function(err, salt) {
@@ -45,10 +44,6 @@ UserModel.pre("save", function(next) {
 
 UserModel.methods.comparePassword = function(password, cb) {
   bcrypt.compare(password, this.password, (err, result) => {
-    console.log("password", password);
-    console.log("this.password", this.password);
-    console.log("err", err);
-    console.log("result", result);
     if (err) {
       return cb(err);
     }

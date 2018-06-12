@@ -5,7 +5,7 @@ import { logout } from "../../Actions/auth";
 import "../css/SignIns.css";
 
 class Navigation extends Component {
-  handleLogoutClick = e => {
+  handleLogoutClick = () => {
     this.props.logout();
   };
 
@@ -17,8 +17,8 @@ class Navigation extends Component {
           WikaKita
         </Link>
         <div className="signins">
-          {this.props.authenticated ? (
-            <Link to="/logout" onClick={this.handleLogoutClick}>
+          {this.props.isAuthenticated ? (
+            <Link to="/" onClick={this.handleLogoutClick}>
               Logout
             </Link>
           ) : (
@@ -35,7 +35,7 @@ class Navigation extends Component {
 
 const mapStateToProps = state => {
   return {
-    authenticated: state.auth.authenticated
+    isAuthenticated: state.auth.isAuthenticated
   };
 };
 

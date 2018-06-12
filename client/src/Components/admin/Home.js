@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 
 class Home extends Component {
   render() {
-    // console.log("this.props", this.props);
     return (
       <div>
-        {this.props.authenticated ? (
+        {this.props.isAuthenticated ? (
           <div>
             <div>Welcome to WikaKita</div>
             <Link to="/flashcards">Start</Link>
@@ -22,7 +21,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    authenticated: state.auth.authenticated
+    isAuthenticated: state.auth.isAuthenticated
   };
 };
 

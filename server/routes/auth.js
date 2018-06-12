@@ -1,6 +1,6 @@
+const jwt = require("jwt-simple");
 const passport = require("passport");
 const User = require("../models/UserModel");
-const jwt = require("jwt-simple");
 
 const STATUS_USER_ERROR = 422;
 const STATUS_SERVER_ERROR = 500;
@@ -77,13 +77,13 @@ module.exports = app => {
   });
 
   // logout
-  app.get(
-    "/api/logout",
-    passport.authenticate("jwt", { session: false }),
-    function(req, res) {
-      req.logout();
-    }
-  );
+  app.get("/api/logout", function(req, res) {
+    req.logout();
+    res.json({
+      status: "Logged Out",
+      msg: "Please Login Again"
+    });
+  });
 
   //authenticate
   app.get(
