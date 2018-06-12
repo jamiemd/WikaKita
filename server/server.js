@@ -27,9 +27,6 @@ Flashcards(app);
 
 const port = 8000;
 
-// mongoose.Promise = global.Promise;
-// mongoose.connect("mongodb://localhost/wikikita");
-
 app.listen(port, () => {
   console.log("We are live on " + port);
 });

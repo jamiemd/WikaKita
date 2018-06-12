@@ -4,10 +4,17 @@ import { Link } from "react-router-dom";
 
 class Home extends Component {
   render() {
+    // console.log("this.props", this.props);
     return (
       <div>
-        <div>Welcome to WikaKita</div>
-        <Link to="/flashcards">Start</Link>
+        {this.props.authenticated ? (
+          <div>
+            <div>Welcome to WikaKita</div>
+            <Link to="/flashcards">Start</Link>
+          </div>
+        ) : (
+          <div>Sign Up</div>
+        )}
       </div>
     );
   }

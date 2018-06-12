@@ -46,23 +46,38 @@ export const login = (username, password, history) => {
       })
       .catch(error => {
         console.log("error", error);
-        dispatch(authError(error.response.data.error));
       });
   };
 };
 
-export const signout = history => {
+export const logout = history => {
   return dispatch => {
     axios
-      .post(`${ROOT_URL}/signout`, { history })
-      .then(() => {
+      .post(`${ROOT_URL}/logout`, { history })
+      .then(res => {
+        console.log("res", res);
         dispatch({
           type: USER_UNAUTHENTICATED
         });
         history.push("/");
       })
-      .catch(() => {
+      .catch(error => {
+        console.log("error", error);
         dispatch(authError("Failed to log you out"));
+      });
+  };
+};
+
+export const authenticate = () => {
+  return dispatch => {
+    axios
+      .post(`${ROOT_URL}/authenticate`)
+      .then(res => {
+        console.log("res", res);
+        dispatch({ type: USER_AUTHENTICATED });
+      })
+      .catch(error => {
+        console.log("error", error);
       });
   };
 };

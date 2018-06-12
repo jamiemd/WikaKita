@@ -46,7 +46,6 @@ module.exports = app => {
         $or: [{ email: req.body.email }, { username: req.body.username }]
       },
       function(err, user) {
-        console.log("err:", err);
         if (err) throw err;
         if (!user) {
           res.json({
@@ -54,9 +53,8 @@ module.exports = app => {
             msg: "Authentication failed. User not found."
           });
         } else {
-          console.log(user.password, req.body.password);
           user.comparePassword(req.body.password, function(err, isMatch) {
-            console.log(isMatch);
+            // console.log("isMatch", isMatch);
             if (isMatch && !err) {
               var token = jwt.encode(user, "wikakita");
               res.json({
@@ -84,18 +82,20 @@ module.exports = app => {
     passport.authenticate("jwt", { session: false }),
     function(req, res) {
       req.logout();
-      res.status(200).redirect("/");
     }
   );
 
-  // authenticate
-  // app.post(
-  //   "/profile",
-  //   passport.authenticate("jwt", { session: false }),
-  //   function(req, res) {
-  //     res.send(req.user.profile);
-  //   }
-  // );
+  //authenticate
+  app.get(
+    "api/authenticate",
+    passport.authenticate("jwt", { session: false }),
+    function(req, res) {
+      res.json({
+        message: "User authenticated",
+        user: req.user
+      });
+    }
+  );
 
   // get all users
   app.get("/api/users", (req, res) => {

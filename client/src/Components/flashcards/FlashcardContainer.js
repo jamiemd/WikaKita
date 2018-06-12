@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Flashcards from "./Flashcards";
 import { connect } from "react-redux";
+import Flashcards from "./Flashcards";
 import "../css/FlashcardContainer.css";
 
 import {
@@ -12,10 +12,13 @@ import {
   resetCardState
 } from "../../Actions/flashcards";
 
+import { authenticate } from "../../Actions/auth";
+
 class FlashcardContainer extends Component {
   componentDidMount() {
-    console.log("this.props getcards", this.props);
+    console.log("this.props flashcards", this.props);
     this.props.getCards();
+    this.props.authenticate();
   }
 
   render() {
@@ -77,10 +80,11 @@ class FlashcardContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("state", state);
   return { flashcards: state.flashcards };
 };
 
 export default connect(
   mapStateToProps,
-  { getCards, nextCard, showAnswer, updateBucket, resetCardState }
+  { authenticate, getCards, nextCard, showAnswer, updateBucket, resetCardState }
 )(FlashcardContainer);
