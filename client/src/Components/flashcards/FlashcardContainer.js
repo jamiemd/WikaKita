@@ -4,19 +4,11 @@ import { connect } from "react-redux";
 import Flashcards from "./Flashcards";
 import "../css/FlashcardContainer.css";
 
-import {
-  getCards,
-  nextCard,
-  showAnswer,
-  updateBucket,
-  resetCardState
-} from "../../Actions/flashcards";
-
+import { getCards } from "../../Actions/flashcards";
 import { authenticate } from "../../Actions/auth";
 
 class FlashcardContainer extends Component {
   componentDidMount() {
-    console.log("this.props flashcards", this.props);
     this.props.getCards();
     this.props.authenticate();
   }
@@ -81,10 +73,10 @@ class FlashcardContainer extends Component {
 
 const mapStateToProps = state => {
   console.log("state", state);
-  return { flashcards: state.flashcards };
+  return { flashcards: state.flashcards, isAuthenticated: state.auth };
 };
 
 export default connect(
   mapStateToProps,
-  { authenticate, getCards, nextCard, showAnswer, updateBucket, resetCardState }
+  { authenticate, getCards }
 )(FlashcardContainer);

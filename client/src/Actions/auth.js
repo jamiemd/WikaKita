@@ -71,14 +71,20 @@ export const logout = () => {
 
 export const authenticate = () => {
   return dispatch => {
+    console.log("jwt", localStorage.getItem("jwt"));
     axios
-      .post(`${ROOT_URL}/authenticate`)
+      .get(`${ROOT_URL}/authenticate`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("jwt")
+        }
+      })
       .then(res => {
         console.log("res", res);
         dispatch({ type: USER_AUTHENTICATED });
       })
       .catch(error => {
-        console.log("error", error);
+        console.log("error.response.data", error.response.data);
       });
   };
 };

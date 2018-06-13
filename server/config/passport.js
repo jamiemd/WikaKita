@@ -1,23 +1,26 @@
-const passportJWT = require("passport-jwt");
-const ExtractJwt = passportJWT.ExtractJwt;
-const JwtStrategy = passportJWT.Strategy;
+const JwtStrategy = require("passport-jwt").Strategy,
+  ExtractJwt = require("passport-jwt").ExtractJwt;
 
 const User = require("../models/UserModel");
 
 module.exports = passport => {
   const opts = {};
-  opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-  opts.secretOrKey = "secret";
+  opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
+
+  opts.JWT_ALLOW_REFRESH = true;
+  opts.expiresIn = "15m";
+  opts.secretOrKey = "wikakita";
+
   passport.use(
     new JwtStrategy(opts, function(jwt_payload, done) {
-      User.findOne({ id: jwt_payload.sub }, function(err, user) {
+      User.findOne({ _id: jwt_payload._id }, function(err, user) {
         if (err) {
           return done(err, false);
         }
         if (user) {
-          return done(null, user);
+          done(null, user);
         } else {
-          return done(null, false);
+          done(null, false);
         }
       });
     })

@@ -1,7 +1,6 @@
 const jwt = require("jwt-simple");
-const passport = require("passport");
 const User = require("../models/UserModel");
-
+const passport = require("passport");
 const STATUS_USER_ERROR = 422;
 const STATUS_SERVER_ERROR = 500;
 const STATUS_OKAY = 200;
@@ -46,11 +45,10 @@ module.exports = app => {
         $or: [{ email: req.body.email }, { username: req.body.username }]
       },
       function(err, user) {
-        if (err) throw err;
-        if (!user) {
+        if (err || !user) {
           res.json({
-            success: false,
-            msg: "Authentication failed. User not found."
+            message: "Authentication failed. User not found.",
+            user: user
           });
         } else {
           user.comparePassword(req.body.password, function(err, isMatch) {
@@ -81,15 +79,17 @@ module.exports = app => {
     req.logout();
     res.json({
       status: "Logged Out",
-      msg: "Please Login Again"
+      message: "Please Login Again"
     });
   });
 
-  //authenticate
+  // authenticate
   app.get(
-    "api/authenticate",
+    "/api/authenticate",
     passport.authenticate("jwt", { session: false }),
     function(req, res) {
+      console.log(req.get("Authorization"));
+
       res.json({
         message: "User authenticated",
         user: req.user

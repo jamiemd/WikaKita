@@ -49,7 +49,7 @@ class Flashcards extends Component {
   };
 
   render() {
-    console.log("this.props flashcards", this.props);
+    // console.log("this.props flashcards", this.props);
     // if no cards then return null
     // console.log('flashcards this.props', this.props)
 
