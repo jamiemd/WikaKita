@@ -15,14 +15,20 @@ class FlashcardContainer extends Component {
   }
 
   render() {
+    console.log("this.props", this.props);
     const isLoggedIn = this.props.isLoggedIn;
+    const currentIndex = this.props.flashcards.currentIndex;
+    const flashcardsArrayLength = this.props.flashcards.data.length - 1;
 
     return (
       <div>
         {isLoggedIn ? (
           <div className="cardContainer">
             <div className="exitContainer">
-              <Link className="exit" to="/home">
+              <div>
+                {currentIndex}/{flashcardsArrayLength}
+              </div>
+              <Link className="exit" to="/">
                 X
               </Link>
             </div>
@@ -37,6 +43,7 @@ class FlashcardContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("state", state);
   return { flashcards: state.flashcards, isLoggedIn: state.auth.isLoggedIn };
 };
 

@@ -15,37 +15,35 @@ class FlashcardData extends Component {
   };
 
   handleNoButtonClick = () => {
-    this.props.nextCard();
-
+    const grade = "no";
     const currentFlashcard = this.props.flashcards.data[
       this.props.flashcards.currentIndex
     ];
-    const grade = "no";
 
+    this.props.nextCard();
     this.props.updateBucket(currentFlashcard._id, grade);
   };
 
   handleYesButtonClick = () => {
-    this.props.nextCard();
-    this.props.correctAnswerCount();
-
+    const grade = "yes";
     const currentFlashcard = this.props.flashcards.data[
       this.props.flashcards.currentIndex
     ];
-    const grade = "yes";
 
+    this.props.nextCard();
+    this.props.correctAnswerCount();
     this.props.updateBucket(currentFlashcard._id, grade);
   };
 
   render() {
-    console.log("this.props", this.props);
+    // console.log("this.props", this.props);
 
     const cardSide = this.props.flashcards.cardSide;
     const currentIndex = this.props.flashcards.currentIndex;
     const currentFlashcard = this.props.flashcards.data[currentIndex];
     const flashcardsArrayLength = this.props.flashcards.data.length - 1;
 
-    if (this.props === undefined) {
+    if (currentFlashcard === undefined) {
       return null;
     }
 

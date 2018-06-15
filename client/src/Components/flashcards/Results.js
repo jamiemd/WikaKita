@@ -5,21 +5,21 @@ import { resetCardState, correctAnswerCount } from "../../Actions/flashcards";
 import "../css/Results.css";
 
 class ResultsPage extends Component {
-  handleHomeClick = e => {
+  handleHomeClick = () => {
     this.props.resetCardState();
   };
 
   render() {
     console.log("results this.props", this.props);
+    const flashcardsArrayLength = this.props.flashcards.data.length;
+    const correctAnswerCount = this.props.flashcards.correctAnswerCount;
 
     return (
       <div className="resultsContainer">
         <div className="resultsText">
-          <div className="numberCorrect">
-            {this.props.flashcards.correctAnswerCount}
-          </div>
+          <div className="numberCorrect">{correctAnswerCount}</div>
           <div className="slash"> / </div>
-          <div>{this.props.flashcards.data.length}</div>
+          <div>{flashcardsArrayLength}</div>
         </div>
         <div className="correctText">Correct</div>
         <div className="homeButtonContainer">
