@@ -88,8 +88,6 @@ module.exports = app => {
     "/api/authenticate",
     passport.authenticate("jwt", { session: false }),
     function(req, res) {
-      console.log(req.get("Authorization"));
-
       res.json({
         message: "User authenticated",
         user: req.user

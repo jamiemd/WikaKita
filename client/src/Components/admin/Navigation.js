@@ -10,14 +10,14 @@ class Navigation extends Component {
   };
 
   render() {
-    // console.log("this.props", this.props);
+    console.log("this.props", this.props);
     return (
       <div className="nav-container">
         <Link className="headerLink" to="/">
           WikaKita
         </Link>
         <div className="signins">
-          {this.props.isAuthenticated ? (
+          {this.props.isLoggedIn ? (
             <Link to="/" onClick={this.handleLogoutClick}>
               Logout
             </Link>
@@ -35,7 +35,7 @@ class Navigation extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.auth.isAuthenticated
+    isLoggedIn: state.auth.isLoggedIn
   };
 };
 

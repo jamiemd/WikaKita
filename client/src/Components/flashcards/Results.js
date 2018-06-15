@@ -23,11 +23,7 @@ class ResultsPage extends Component {
         </div>
         <div className="correctText">Correct</div>
         <div className="homeButtonContainer">
-          <Link
-            className="homeButton"
-            to="/home"
-            onClick={this.handleHomeClick}
-          >
+          <Link className="homeButton" to="/" onClick={this.handleHomeClick}>
             Home
           </Link>
         </div>

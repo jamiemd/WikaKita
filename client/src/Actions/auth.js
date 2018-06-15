@@ -71,7 +71,6 @@ export const logout = () => {
 
 export const authenticate = () => {
   return dispatch => {
-    console.log("jwt", localStorage.getItem("jwt"));
     axios
       .get(`${ROOT_URL}/authenticate`, {
         headers: {
@@ -80,7 +79,7 @@ export const authenticate = () => {
         }
       })
       .then(res => {
-        console.log("res", res);
+        // console.log("res", res);
         dispatch({ type: USER_AUTHENTICATED });
       })
       .catch(error => {

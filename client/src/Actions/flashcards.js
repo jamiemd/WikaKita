@@ -16,7 +16,7 @@ export const getCards = () => {
     axios
       .get(`${ROOT_URL}/flashcards`)
       .then(res => {
-        console.log("res", res);
+        // console.log("res", res);
         dispatch({
           type: GET_CARDS,
           payload: res.data
@@ -28,34 +28,38 @@ export const getCards = () => {
   };
 };
 
+// get next card
 export const nextCard = () => {
   return {
     type: NEXT_CARD
   };
 };
 
+// show answer
 export const showAnswer = () => {
   return {
     type: SHOW_ANSWER
   };
 };
 
+// reset cards
 export const resetCardState = () => {
   return {
     type: RESET_CARD_STATE
   };
 };
 
+// correct answer count
 export const correctAnswerCount = () => {
   return {
     type: CORRECT_ANSWER_COUNT
   };
 };
 
-export const updateBucket = (id, newBucket) => {
-  // console.log('updatebucket', id, newBucket);
+// update bucket
+export const updateBucket = (id, grade) => {
   return dispatch => {
-    axios.put(`${ROOT_URL}/updateBucket`, { id, newBucket }).then(res => {
+    axios.put(`${ROOT_URL}/updateBucket`, { id, grade }).then(res => {
       dispatch({
         type: UPDATE_BUCKET
       });
@@ -63,6 +67,7 @@ export const updateBucket = (id, newBucket) => {
   };
 };
 
+// get stats
 export const getStats = () => {
   return dispatch => {
     const apiUrl = `${ROOT_URL}/getStats`;

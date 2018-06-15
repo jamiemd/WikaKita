@@ -7,17 +7,17 @@ import {
 
 export default (
   auth = {
-    isAuthenticated: localStorage.getItem("id_token") ? true : false
+    isLoggedIn: localStorage.getItem("id_token") ? true : false
   },
   action
 ) => {
   switch (action.type) {
     case USER_REGISTERED:
-      return { ...auth, registered: true };
+      return { ...auth, isRegistered: true };
     case USER_AUTHENTICATED:
-      return { ...auth, isAuthenticated: true };
+      return { ...auth, isLoggedIn: true };
     case USER_UNAUTHENTICATED:
-      return { ...auth, isAuthenticated: false };
+      return { ...auth, isLoggedIn: false };
     case AUTHENTICATION_ERROR:
       return { ...auth, error: action.payload };
     default:

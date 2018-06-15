@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Flashcards from "./Flashcards";
+import FlashcardData from "./FlashcardData";
 import "../css/FlashcardContainer.css";
+import Home from "../admin/Home";
 
 import { getCards } from "../../Actions/flashcards";
 import { authenticate } from "../../Actions/auth";
@@ -14,66 +15,29 @@ class FlashcardContainer extends Component {
   }
 
   render() {
-    // if no overdue cards, show no data
-    // if overdue cards, show current flashcard
-    // if finished show results page
-
-    if (
-      this.props.flashcards.data === undefined ||
-      this.props.flashcards.data === 0
-    ) {
-      return null;
-    }
-
-    if (this.props.flashcards.showResultsPage) {
-      return (
-        <div className="cardContainer">
-          <div className="exitContainer">
-            <Link className="exit" to="/home">
-              X
-            </Link>
-          </div>
-        </div>
-      );
-    }
-
-    let currentFlashcard = this.props.flashcards.data[
-      this.props.flashcards.currentIndex
-    ];
-    if (currentFlashcard) {
-      return (
-        <div className="cardContainer">
-          <div className="exitContainer">
-            <Link className="exit" to="/home">
-              X
-            </Link>
-          </div>
-          <Flashcards />
-        </div>
-      );
-    }
+    const isLoggedIn = this.props.isLoggedIn;
 
     return (
-      <div className="cardContainer">
-        <div className="exitContainer">
-          <Link className="exit" to="/home">
-            X
-          </Link>
-        </div>
-        <div className="overdueText">There are no overdue cards</div>
-        <div className="homeButtonContainer">
-          <Link className="homeButton" to="/">
-            Home
-          </Link>
-        </div>
+      <div>
+        {isLoggedIn ? (
+          <div className="cardContainer">
+            <div className="exitContainer">
+              <Link className="exit" to="/home">
+                X
+              </Link>
+            </div>
+            <FlashcardData />
+          </div>
+        ) : (
+          <Home />
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log("state", state);
-  return { flashcards: state.flashcards, isAuthenticated: state.auth };
+  return { flashcards: state.flashcards, isLoggedIn: state.auth.isLoggedIn };
 };
 
 export default connect(

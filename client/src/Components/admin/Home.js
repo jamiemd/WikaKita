@@ -6,7 +6,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        {this.props.isAuthenticated ? (
+        {this.props.isLoggedIn ? (
           <div>
             <div>Welcome to WikaKita</div>
             <Link to="/flashcards">Start</Link>
@@ -21,7 +21,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.auth.isAuthenticated
+    isLoggedIn: state.auth.isLoggedIn
   };
 };
 
