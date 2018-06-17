@@ -16,14 +16,14 @@ export const getCards = () => {
     axios
       .get(`${ROOT_URL}/flashcards`)
       .then(res => {
-        // console.log("res", res);
+        console.log("res", res);
         dispatch({
           type: GET_CARDS,
           payload: res.data
         });
       })
       .catch(error => {
-        console.log("error", error);
+        console.log("error", error.response);
       });
   };
 };

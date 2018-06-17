@@ -11,26 +11,18 @@ const initialState = {
   data: [],
   currentIndex: 0,
   cardSide: "front",
-  showResultsPage: false,
   correctAnswerCount: 0
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_CARDS:
-      // console.log("action.payload.data", action.payload);
       return {
         ...state,
         data: action.payload,
         currentIndex: 0
       };
     case NEXT_CARD:
-      if (state.currentIndex === state.data.length - 1) {
-        return {
-          ...state,
-          showResultsPage: true
-        };
-      }
       return {
         ...state,
         data: state.data,

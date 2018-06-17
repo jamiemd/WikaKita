@@ -15,10 +15,10 @@ class FlashcardContainer extends Component {
   }
 
   render() {
-    console.log("this.props", this.props);
+    // console.log("this.props", this.props);
     const isLoggedIn = this.props.isLoggedIn;
-    const currentIndex = this.props.flashcards.currentIndex;
-    const flashcardsArrayLength = this.props.flashcards.data.length - 1;
+    const currentIndex = this.props.flashcards.currentIndex + 1;
+    const flashcardsArrayLength = this.props.flashcards.data.length;
 
     return (
       <div>
@@ -43,8 +43,8 @@ class FlashcardContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("state", state);
-  return { flashcards: state.flashcards, isLoggedIn: state.auth.isLoggedIn };
+  // console.log("state", state);
+  return { isLoggedIn: state.auth.isLoggedIn, flashcards: state.flashcards };
 };
 
 export default connect(

@@ -6,6 +6,7 @@ import SignUp from "./Components/admin/SignUp";
 import Login from "./Components/admin/Login";
 import Navigation from "./Components/admin/Navigation";
 import FlashcardsContainer from "./Components/flashcards/FlashcardContainer";
+import WordList from "./Components/flashcards/WordList";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Home} />
           <Route exact path="/flashcards" component={FlashcardsContainer} />
+          <Route exact path="/wordlist" component={WordList} />
         </div>
       </BrowserRouter>
     );

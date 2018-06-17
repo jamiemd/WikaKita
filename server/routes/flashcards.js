@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const Flashcards = require("../models/FlashcardModel");
 
 module.exports = app => {
@@ -13,7 +12,7 @@ module.exports = app => {
       .catch(() => {
         res
           .status(500)
-          .json({ error: "The information could not be retrieved" });
+          .json({ message: "The information could not be retrieved" });
       });
   });
 
@@ -53,8 +52,7 @@ module.exports = app => {
       } else if (newBucket === 5) {
         newDate.setDate(dateNow.getDate() + 15);
       }
-
-      console.log("newBucket", newBucket);
+      // console.log("newBucket", newBucket);
 
       // update currentbucket and review date
       Flashcards.findByIdAndUpdate(

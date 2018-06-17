@@ -10,7 +10,7 @@ class Navigation extends Component {
   };
 
   render() {
-    console.log("this.props", this.props);
+    // console.log("this.props", this.props);
     return (
       <div className="nav-container">
         <Link className="headerLink" to="/">
