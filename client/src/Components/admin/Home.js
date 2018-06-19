@@ -8,8 +8,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log("this.props", this.props);
-    console.log("this.props.flashcards.data", this.props.flashcards.data);
     return (
       <div>
         {this.props.isLoggedIn ? (

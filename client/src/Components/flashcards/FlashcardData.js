@@ -40,8 +40,6 @@ class FlashcardData extends Component {
   };
 
   render() {
-    console.log("this.props", this.props);
-
     const cardSide = this.props.flashcards.cardSide;
     const currentIndex = this.props.flashcards.currentIndex;
     const currentFlashcard = this.props.flashcards.data[currentIndex];

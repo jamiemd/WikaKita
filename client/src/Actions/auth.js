@@ -79,7 +79,6 @@ export const authenticate = () => {
         }
       })
       .then(res => {
-        console.log("res", res);
         dispatch({ type: USER_AUTHENTICATED });
       })
       .catch(error => {

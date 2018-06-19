@@ -1,3 +1,5 @@
+import { loadState } from "../localStorage";
+
 import {
   GET_CARDS,
   NEXT_CARD,
@@ -7,6 +9,8 @@ import {
   CORRECT_ANSWER_COUNT
 } from "../Actions/flashcards";
 
+let currentCardState = loadState().flashcards.currentIndex;
+console.log("currentCardState", currentCardState);
 const initialState = {
   data: [],
   currentIndex: 0,
@@ -15,12 +19,15 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+  if (currentCardState === undefined) {
+    currentCardState = 0;
+  }
   switch (action.type) {
     case GET_CARDS:
       return {
         ...state,
         data: action.payload,
-        currentIndex: 0
+        currentIndex: currentCardState
       };
     case NEXT_CARD:
       return {

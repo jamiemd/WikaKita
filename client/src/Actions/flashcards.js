@@ -16,7 +16,6 @@ export const getCards = () => {
     axios
       .get(`${ROOT_URL}/flashcards`)
       .then(res => {
-        console.log("res", res);
         dispatch({
           type: GET_CARDS,
           payload: res.data
