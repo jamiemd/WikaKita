@@ -1,5 +1,3 @@
-import { loadState } from "../localStorage";
-
 import {
   GET_CARDS,
   NEXT_CARD,
@@ -9,8 +7,6 @@ import {
   CORRECT_ANSWER_COUNT
 } from "../Actions/flashcards";
 
-let currentCardState = loadState().flashcards.currentIndex;
-console.log("currentCardState", currentCardState);
 const initialState = {
   data: [],
   currentIndex: 0,
@@ -19,15 +15,16 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  if (currentCardState === undefined) {
-    currentCardState = 0;
-  }
+  // console.log("state", state);
+  // console.log("state.currentIndex", state.currentIndex);
+  // console.log("state.data.length", state.data.length);
+
   switch (action.type) {
     case GET_CARDS:
       return {
         ...state,
         data: action.payload,
-        currentIndex: currentCardState
+        currentIndex: 0
       };
     case NEXT_CARD:
       return {
@@ -46,6 +43,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         showResultsPage: false,
+        currentIndex: 0,
         correctAnswerCount: 0
       };
     case CORRECT_ANSWER_COUNT:

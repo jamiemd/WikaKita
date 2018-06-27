@@ -28,5 +28,15 @@
     "english": "tomorrow",
     "tagalog": "bukas",
     "currentBucket": 1
+  },
+  {
+    "english": "week",
+    "tagalog": "linggo",
+    "currentBucket": 1
+  },
+  {
+    "english": "tomorrow",
+    "tagalog": "bukas",
+    "currentBucket": 1
   }
 ]

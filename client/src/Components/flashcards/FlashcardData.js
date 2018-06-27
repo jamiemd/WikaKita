@@ -5,7 +5,8 @@ import {
   nextCard,
   showAnswer,
   updateBucket,
-  correctAnswerCount
+  correctAnswerCount,
+  resetCardState
 } from "../../Actions/flashcards";
 import "../css/Flashcards.css";
 import Results from "./Results";
@@ -40,18 +41,25 @@ class FlashcardData extends Component {
   };
 
   render() {
+    console.log("this.props", this.props);
     const cardSide = this.props.flashcards.cardSide;
     const currentIndex = this.props.flashcards.currentIndex;
     const currentFlashcard = this.props.flashcards.data[currentIndex];
     const arrayLength = this.props.flashcards.data.length;
 
+    // if deck is finished show results page
     if (currentIndex + 1 > arrayLength) {
+      // change currentIndex to 0
+
       return <Results />;
     }
+
+    // if data has not been loaded yet return null
     if (!currentFlashcard) {
       return null;
     }
 
+    // if there are cards for review, go through deck
     if (this.props.flashcards.length !== 0) {
       return (
         <div className="wrapper">
@@ -99,5 +107,12 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getCards, nextCard, showAnswer, updateBucket, correctAnswerCount }
+  {
+    getCards,
+    nextCard,
+    showAnswer,
+    updateBucket,
+    correctAnswerCount,
+    resetCardState
+  }
 )(FlashcardData);

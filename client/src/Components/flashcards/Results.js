@@ -10,7 +10,7 @@ class ResultsPage extends Component {
   };
 
   render() {
-    console.log("results this.props", this.props);
+    // console.log("results this.props", this.props);
     const flashcardsArrayLength = this.props.flashcards.data.length;
     const correctAnswerCount = this.props.flashcards.correctAnswerCount;
 
