@@ -7,7 +7,7 @@ import {
 
 export default (
   auth = {
-    isLoggedIn: localStorage.getItem("id_token") ? true : false
+    isLoggedIn: localStorage.getItem("jwt") ? true : false
   },
   action
 ) => {

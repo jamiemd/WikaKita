@@ -1,0 +1,49 @@
+.nav-background {
+  background-color: lightseagreen;
+  height: 60px;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin: auto;
+}
+
+.nav-link {
+  text-decoration: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 10px;
+}
+
+.signins {
+  display: flex;
+}
+
+a.nav-link:visited {
+  color: white;
+}
+
+.login,
+signup {
+  color: white;
+}
+
+.login {
+  padding-right: 20px;
+}
+
+.signup {
+  border: 1px solid white;
+  border-radius: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.wikakita-logo {
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import { login } from "../../Actions/auth";
+import "../css/SignIns.css";
 
 class LoginForm extends Component {
   renderAlert = () => {
@@ -19,19 +20,21 @@ class LoginForm extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <div>
+      <div className="form-container">
+        <div className="signins-title">Log In</div>
+        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
           <label>Username</label>
-          <Field name="username" component="input" type="text" />
-        </div>
-
-        <div>
+          <div>
+            <Field name="username" component="input" type="text" />
+          </div>
           <label>Password</label>
-          <Field name="password" component="input" type="text" />
-        </div>
-        <button type="submit">Submit</button>
-        {this.renderAlert()}
-      </form>
+          <div>
+            <Field name="password" component="input" type="text" />
+          </div>
+          <button type="submit">Submit</button>
+          {this.renderAlert()}
+        </form>
+      </div>
     );
   }
 }

@@ -1,0 +1,36 @@
+.home-container {
+  text-align: center;
+}
+
+.home-title {
+  font-size: 20px;
+  margin: 30px;
+}
+
+.home-link-container {
+  border-radius: 7px;
+  margin: auto;
+  margin-top: 30px;
+  width: 60%;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+a.home-links {
+  text-decoration: none;
+  margin: auto;
+  color: white;
+  padding: 5px;
+  background-color: lightseagreen;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 30px;
+  border-radius: 7px;
+}
+
+a.home-links:visited {
+  color: white;
+}

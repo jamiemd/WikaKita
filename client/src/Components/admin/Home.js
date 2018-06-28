@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCards } from "../../Actions/flashcards";
+import "../css/Home.css";
+
 class Home extends Component {
   componentDidMount() {
     this.props.getCards();
@@ -9,17 +11,21 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="home-container">
         {this.props.isLoggedIn ? (
-          <div>
-            <div>Welcome to WikaKita</div>
-            {this.props.flashcards.data.length !== 0 ? (
-              <Link to="/flashcards">Start</Link>
-            ) : (
-              <div>You have no overdue cards</div>
-            )}
-            <div>
-              <Link to="/wordlist">WordList</Link>
+          <div className="home-link-container">
+            <div className="home-title">Welcome Back</div>
+            <div className="home-links">
+              {this.props.flashcards.data.length !== 0 ? (
+                <Link className="home-links" to="/flashcards">
+                  Start
+                </Link>
+              ) : (
+                <div>You have no overdue cards</div>
+              )}
+              <Link className="home-links" to="/wordlist">
+                WordList
+              </Link>
             </div>
           </div>
         ) : (
@@ -33,6 +39,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("state", state);
   return {
     isLoggedIn: state.auth.isLoggedIn,
     flashcards: state.flashcards

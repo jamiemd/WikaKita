@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../Actions/auth";
-import "../css/SignIns.css";
+import "../css/Navigation.css";
 
 class Navigation extends Component {
   handleLogoutClick = () => {
@@ -12,21 +12,31 @@ class Navigation extends Component {
   render() {
     // console.log("this.props", this.props);
     return (
-      <div className="nav-container">
-        <Link className="headerLink" to="/">
-          WikaKita
-        </Link>
-        <div className="signins">
-          {this.props.isLoggedIn ? (
-            <Link to="/" onClick={this.handleLogoutClick}>
-              Logout
-            </Link>
-          ) : (
-            <div>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
-            </div>
-          )}
+      <div className="nav-background">
+        <div className="nav-container">
+          <Link className="nav-link wikakita-logo" to="/">
+            WikaKita
+          </Link>
+          <div className="signins">
+            {this.props.isLoggedIn ? (
+              <Link
+                className="nav-link"
+                to="/"
+                onClick={this.handleLogoutClick}
+              >
+                Logout
+              </Link>
+            ) : (
+              <div className="signins">
+                <Link className="nav-link login" to="/login">
+                  Login
+                </Link>
+                <Link className="nav-link signup" to="/signup">
+                  Sign Up
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
