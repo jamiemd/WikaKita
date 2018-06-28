@@ -24,7 +24,7 @@ class Home extends Component {
                 <div>You have no overdue cards</div>
               )}
               <Link className="home-links" to="/wordlist">
-                WordList
+                Word List
               </Link>
             </div>
           </div>

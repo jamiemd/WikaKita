@@ -79,15 +79,15 @@ class FlashcardData extends Component {
               <div className="divider" />
               <div className="bottomWord">{currentFlashcard.tagalog}</div>
               <div className="rememberText">Did you remember it?</div>
-              <div className="buttons">
+              <div className="grade-buttons">
                 <button
-                  className="gradeButtons"
+                  className="no-button"
                   onClick={this.handleNoButtonClick}
                 >
                   No
                 </button>
                 <button
-                  className="gradeButtons"
+                  className="yes-button"
                   onClick={this.handleYesButtonClick}
                 >
                   Yes

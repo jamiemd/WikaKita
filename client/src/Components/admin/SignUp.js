@@ -35,7 +35,9 @@ class SignUpForm extends Component {
           <div className="input">
             <Field name="password" component="input" type="text" />
           </div>
-          <button type="submit">Submit</button>
+          <button className="submit" type="submit">
+            Submit
+          </button>
           {this.renderAlert()}
         </form>
       </div>

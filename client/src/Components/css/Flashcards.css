@@ -1,31 +1,5 @@
-.buttons {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.gradeButtons {
-  background-color: #ffa500;
-  color:white;
-  width: 100px;
-  height: 45px;
-  margin: 0px 5px 0px 5px;
-  border-radius: 15px;
-  font-size: 20px;
-}
-
-.showAnswerButton {
-  background-color: #ffa500;
-  color:white;
-  width: 180px;
-  height: 45px;
-  margin-top: 175px;
-  border-radius: 15px;
-  font-size: 20px;
-}
-
 .topWord {
-  color:#2e2e2e;
+  color: #2e2e2e;
   padding-top: 130px;
   padding-bottom: 10px;
   font-size: 40px;
@@ -34,7 +8,7 @@
 .divider {
   margin: auto;
   width: 50%;
-  height: 1px;
+  height: 2px;
   background: black;
 }
 
@@ -42,7 +16,35 @@
   color: gray;
   font-size: 40px;
   padding-top: 10px;
-  padding-bottom: 100px;
+  padding-bottom: 80px;
+}
+
+.grade-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.no-button,
+.yes-button {
+  background-color: lightseagreen;
+  width: 200px;
+  color: white;
+  width: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 45px;
+  border-radius: 7px;
+  font-size: 20px;
+}
+
+.showAnswer {
+  background-color: lightseagreen;
+  color: white;
+  width: 180px;
+  height: 45px;
+  margin-top: 175px;
+  border-radius: 7px;
+  font-size: 20px;
 }
 
 .rememberText {
