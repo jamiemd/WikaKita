@@ -7,7 +7,7 @@ import "../css/SignIns.css";
 class LoginForm extends Component {
   renderAlert = () => {
     if (!this.props.error) return null;
-    return <h3>{this.props.error}</h3>;
+    return <div className="error">{this.props.error}</div>;
   };
 
   handleFormSubmit = ({ username, password }) => {
@@ -42,6 +42,7 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("state", state);
   return {
     error: state.auth.error
   };

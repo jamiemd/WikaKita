@@ -8,6 +8,7 @@ export const USER_UNAUTHENTICATED = "USER_UNAUTHENTICATED";
 export const AUTHENTICATION_ERROR = "AUTHENTICATION_ERROR";
 
 export const authError = error => {
+  console.log("autherror", error);
   return {
     type: AUTHENTICATION_ERROR,
     payload: error
@@ -39,11 +40,15 @@ export const login = (username, password, history) => {
       .post(`${ROOT_URL}/login`, { username, password, history })
       .then(res => {
         console.log("res", res);
-        dispatch({
-          type: USER_AUTHENTICATED
-        });
-        history.push("/");
-        localStorage.setItem("jwt", res.data.token);
+        if (res.data.success === true) {
+          dispatch({
+            type: USER_AUTHENTICATED
+          });
+          history.push("/");
+          localStorage.setItem("jwt", res.data.token);
+        } else if (res.data.success === false) {
+          dispatch(authError(res.data.message));
+        }
       })
       .catch(error => {
         console.log("error", error);
@@ -79,10 +84,11 @@ export const authenticate = () => {
         }
       })
       .then(res => {
+        console.log("res", res);
         dispatch({ type: USER_AUTHENTICATED });
       })
       .catch(error => {
-        console.log("error.response.data", error.response.data);
+        console.log("error", error);
       });
   };
 };

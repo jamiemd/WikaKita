@@ -7,7 +7,7 @@ import "../css/SignIns.css";
 class SignUpForm extends Component {
   renderAlert = () => {
     if (!this.props.error) return null;
-    return <h3>{this.props.error}</h3>;
+    return <div className="error">{this.props.error}</div>;
   };
 
   handleFormSubmit = ({ username, email, password }) => {

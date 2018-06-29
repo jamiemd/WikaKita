@@ -38,5 +38,45 @@
     "english": "tomorrow",
     "tagalog": "bukas",
     "currentBucket": 1
+  },
+  {
+    "english": "here",
+    "tagalog": "dito",
+    "currentBucket": 1
+  },
+  {
+    "english": "many",
+    "tagalog": "marami",
+    "currentBucket": 1
+  },
+  {
+    "english": "not",
+    "tagalog": "hindi",
+    "currentBucket": 1
+  },
+  {
+    "english": "this",
+    "tagalog": "ito",
+    "currentBucket": 1
+  },
+  {
+    "english": "who",
+    "tagalog": "sino",
+    "currentBucket": 1
+  },
+  {
+    "english": "heart",
+    "tagalog": "puso",
+    "currentBucket": 1
+  },
+  {
+    "english": "to laugh",
+    "tagalog": "tumawa",
+    "currentBucket": 1
+  },
+  {
+    "english": "to sleep",
+    "tagalog": "matulog",
+    "currentBucket": 1
   }
 ]

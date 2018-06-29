@@ -3,6 +3,7 @@ import {
   NEXT_CARD,
   SHOW_ANSWER,
   GET_STATS,
+  RESET_CARD_STATE,
   CORRECT_ANSWER_COUNT
 } from "../Actions/flashcards";
 
@@ -38,6 +39,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         correctAnswerCount: state.correctAnswerCount + 1
+      };
+    case RESET_CARD_STATE:
+      return {
+        ...state,
+        correctAnswerCount: 0,
+        currentIndex: 0
       };
     case GET_STATS:
       return {

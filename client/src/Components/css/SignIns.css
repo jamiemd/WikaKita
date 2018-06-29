@@ -52,3 +52,9 @@ button.submit {
   font-weight: 500;
   color: white;
 }
+
+.error {
+  color: red;
+  text-align: center;
+  padding-bottom: 20px;
+}

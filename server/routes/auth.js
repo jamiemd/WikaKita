@@ -47,6 +47,7 @@ module.exports = app => {
       function(err, user) {
         if (err || !user) {
           res.json({
+            success: false,
             message: "Authentication failed. User not found.",
             user: user
           });
@@ -88,6 +89,7 @@ module.exports = app => {
     "/api/authenticate",
     passport.authenticate("jwt", { session: false }),
     function(req, res) {
+      console.log("req", req);
       res.json({
         message: "User authenticated",
         user: req.user

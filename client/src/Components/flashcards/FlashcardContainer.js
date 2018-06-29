@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import FlashcardData from "./FlashcardData";
-import "../css/FlashcardContainer.css";
 import Home from "../admin/Home";
-
-import { getCards } from "../../Actions/flashcards";
+import { getCards, resetCardState } from "../../Actions/flashcards";
 import { authenticate } from "../../Actions/auth";
+import "../css/FlashcardContainer.css";
 
 class FlashcardContainer extends Component {
   componentDidMount() {
@@ -14,12 +13,20 @@ class FlashcardContainer extends Component {
     this.props.authenticate();
   }
 
+  handleExitButtonClick() {
+    this.props.resetCardState();
+  }
+
   render() {
     // console.log("this.props", this.props);
     const isLoggedIn = this.props.isLoggedIn;
     const currentIndex = this.props.flashcards.currentIndex;
     const flashcardsArrayLength = this.props.flashcards.data.length;
-    const percentageComplete = (currentIndex / flashcardsArrayLength) * 680;
+    let percentageComplete = (currentIndex / flashcardsArrayLength) * 680;
+
+    if (!percentageComplete) {
+      percentageComplete = 0;
+    }
 
     return (
       <div>
@@ -36,7 +43,11 @@ class FlashcardContainer extends Component {
                 />
               </div>
               <div className="exit-container">
-                <Link className="exit" to="/">
+                <Link
+                  onClick={this.handleExitButtonClick}
+                  className="exit"
+                  to="/"
+                >
                   X
                 </Link>
               </div>
@@ -52,11 +63,10 @@ class FlashcardContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("state", state);
   return { isLoggedIn: state.auth.isLoggedIn, flashcards: state.flashcards };
 };
 
 export default connect(
   mapStateToProps,
-  { authenticate, getCards }
+  { authenticate, getCards, resetCardState }
 )(FlashcardContainer);

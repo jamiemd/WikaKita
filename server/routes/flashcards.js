@@ -19,7 +19,6 @@ module.exports = app => {
   // update bucket
   app.put("/api/updateBucket", function(req, res) {
     const { id, grade } = req.body;
-    console.log("req.body", req.body);
     // find flashcard by id
     Flashcards.findById(id, function(err, flashcard) {
       if (err) throw err;
@@ -64,7 +63,6 @@ module.exports = app => {
         { new: true },
         function(err, flashcard) {
           if (err) throw err;
-          console.log("flashcard", flashcard);
           res.status(200).json(flashcard);
         }
       );

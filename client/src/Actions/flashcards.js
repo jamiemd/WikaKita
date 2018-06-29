@@ -5,6 +5,7 @@ export const NEXT_CARD = "NEXT_CARD";
 export const SHOW_ANSWER = "SHOW_ANSWER";
 export const UPDATE_BUCKET = "UPDATE_BUCKET";
 export const GET_STATS = "GET_STATS";
+export const RESET_CARD_STATE = "RESET_CARD_STATE";
 export const UPDATE_PROGRESS_BAR = "UPDATE_PROGRESS_BAR";
 export const CORRECT_ANSWER_COUNT = "CORRECT_ANSWER_COUNT";
 
@@ -38,6 +39,12 @@ export const nextCard = () => {
 export const showAnswer = () => {
   return {
     type: SHOW_ANSWER
+  };
+};
+
+export const resetCardState = () => {
+  return {
+    type: RESET_CARD_STATE
   };
 };
 
