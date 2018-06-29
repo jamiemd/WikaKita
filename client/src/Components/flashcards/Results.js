@@ -15,18 +15,13 @@ class ResultsPage extends Component {
     const correctAnswerCount = this.props.flashcards.correctAnswerCount;
 
     return (
-      <div className="resultsContainer">
+      <div className="results-container">
         <div className="resultsText">
           <div className="numberCorrect">{correctAnswerCount}</div>
           <div className="slash"> / </div>
           <div>{flashcardsArrayLength}</div>
         </div>
-        <div className="correctText">Correct</div>
-        <div className="homeButtonContainer">
-          <Link className="homeButton" to="/" onClick={this.handleHomeClick}>
-            Home
-          </Link>
-        </div>
+        <div className="correct-text">Correct</div>
       </div>
     );
   }
@@ -38,5 +33,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { resetCardState, correctAnswerCount }
+  { correctAnswerCount }
 )(ResultsPage);

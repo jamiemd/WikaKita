@@ -1,23 +1,46 @@
-.cardContainer {
+.card-container {
   width: 800px;
   height: 500px;
   margin: auto;
   margin-top: 40px;
-  border-radius: 20px;
+  border-radius: 14px;
   background-color: white;
   text-align: center;
-  box-shadow: 1px 1px 20px 1px #e8e8e8;
+  box-shadow: 1px 1px 20px 1px #c8c8c8;
 }
 
-.exitContainer {
-  padding-top: 15px;
-  padding-right: 20px;
-  text-align: right;
+.card-header {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+.progress {
+  padding-top: 4px;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.progress-bar {
+  display: flex;
+  border-radius: 7px;
+  width: 680px;
+  background-color: lightgray;
+}
+
+.my-progress {
+  height: 30px;
+  background-color: lightseagreen;
+  border-radius: 7px;
+}
+
+.exit-container {
+  padding-top: 4px;
 }
 
 .exit {
   text-decoration: none;
-  color: grey;
-  font-weight: 700;
+  color: black;
+  font-weight: 500;
   font-size: 20px;
 }

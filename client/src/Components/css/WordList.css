@@ -1,5 +1,22 @@
-.singleCardContainer {
-  border: 1px solid #ebebeb;
+.wordlist-title {
+  text-align: center;
+  font-size: 30px;
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+
+.single-card-container,
+.wordlist-headers {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ebebeb;
   width: 750px;
   margin: auto;
+  padding: 10px;
+  height: 20px;
+}
+
+.wordlist-header {
+  font-weight: 700;
+  color: lightseagreen;
 }

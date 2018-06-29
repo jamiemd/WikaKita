@@ -16,9 +16,13 @@ class WordList extends Component {
 
     return (
       <div className="statsContainer">
-        <div className="resultsText">Word List</div>
+        <div className="wordlist-title">Word List</div>
+        <div className="wordlist-headers">
+          <div className="wordlist-header">English</div>
+          <div className="wordlist-header">Tagalog</div>
+        </div>
         {this.props.flashcards.data.map((flashcard, i) => (
-          <div className="singleCardContainer" key={i}>
+          <div className="single-card-container" key={i}>
             <div>{flashcard.english}</div>
             <div>{flashcard.tagalog}</div>
           </div>

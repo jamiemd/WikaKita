@@ -23,7 +23,7 @@ a.home-links {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 200px;
   height: 45px;
   border-radius: 7px;
 }

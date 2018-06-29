@@ -3,7 +3,6 @@ import {
   NEXT_CARD,
   SHOW_ANSWER,
   GET_STATS,
-  RESET_CARD_STATE,
   CORRECT_ANSWER_COUNT
 } from "../Actions/flashcards";
 
@@ -15,10 +14,6 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  // console.log("state", state);
-  // console.log("state.currentIndex", state.currentIndex);
-  // console.log("state.data.length", state.data.length);
-
   switch (action.type) {
     case GET_CARDS:
       return {
@@ -39,13 +34,6 @@ export default (state = initialState, action) => {
         data: state.data,
         cardSide: "back"
       };
-    case RESET_CARD_STATE:
-      return {
-        ...state,
-        showResultsPage: false,
-        currentIndex: 0,
-        correctAnswerCount: 0
-      };
     case CORRECT_ANSWER_COUNT:
       return {
         ...state,
@@ -56,18 +44,6 @@ export default (state = initialState, action) => {
         ...state,
         data: action.payload
       };
-    // case TOGGLE_LANGUAGE:
-    //   // console.log("state.currentLanguage", state.currentLanguage);
-    //   if (state.currentLanguage === "english") {
-    //     state.currentLanguage = "tagalog";
-    //   } else {
-    //     state.currentLanguage = "english";
-    //   }
-    // return {
-    //   ...state,
-    //   data: state.data,
-    //   currentLanguage: state.currentLanguage
-    // };
     default:
       return state;
   }

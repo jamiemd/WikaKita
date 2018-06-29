@@ -5,7 +5,7 @@ export const NEXT_CARD = "NEXT_CARD";
 export const SHOW_ANSWER = "SHOW_ANSWER";
 export const UPDATE_BUCKET = "UPDATE_BUCKET";
 export const GET_STATS = "GET_STATS";
-export const RESET_CARD_STATE = "RESET_CARD_STATE";
+export const UPDATE_PROGRESS_BAR = "UPDATE_PROGRESS_BAR";
 export const CORRECT_ANSWER_COUNT = "CORRECT_ANSWER_COUNT";
 
 const ROOT_URL = "http://localhost:8000/api";
@@ -41,10 +41,9 @@ export const showAnswer = () => {
   };
 };
 
-// reset cards
-export const resetCardState = () => {
+export const updateProgressBar = () => {
   return {
-    type: RESET_CARD_STATE
+    type: UPDATE_PROGRESS_BAR
   };
 };
 

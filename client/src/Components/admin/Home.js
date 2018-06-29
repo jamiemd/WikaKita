@@ -14,11 +14,11 @@ class Home extends Component {
       <div className="home-container">
         {this.props.isLoggedIn ? (
           <div className="home-link-container">
-            <div className="home-title">Welcome Back</div>
+            <div className="home-title">Flashcards Home</div>
             <div className="home-links">
               {this.props.flashcards.data.length !== 0 ? (
                 <Link className="home-links" to="/flashcards">
-                  Start
+                  Start Flashcards
                 </Link>
               ) : (
                 <div>You have no overdue cards</div>
@@ -30,7 +30,10 @@ class Home extends Component {
           </div>
         ) : (
           <div>
-            <h1>Welcome</h1>Sign Up
+            <div className="home-title">Learn Tagalog Now!</div>
+            <Link className="home-links" to="/signup">
+              Sign Up
+            </Link>
           </div>
         )}
       </div>
