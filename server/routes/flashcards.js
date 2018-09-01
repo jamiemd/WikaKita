@@ -7,6 +7,7 @@ module.exports = app => {
     Flashcards.find({})
       // .find({ ReviewDate: { $lte: currentDate } })
       .then(flashcards => {
+        console.log("flashcards", flashcards);
         res.status(200).json(flashcards);
       })
       .catch(() => {

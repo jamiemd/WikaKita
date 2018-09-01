@@ -77,7 +77,7 @@ class FlashcardData extends Component {
               <div className="topWord">{currentFlashcard.english}</div>
               <div className="divider" />
               <div className="bottomWord">{currentFlashcard.tagalog}</div>
-              <div className="rememberText">Did you remember it?</div>
+              <div className="rememberText">Do you remember?</div>
               <div className="grade-buttons">
                 <button
                   className="no-button"

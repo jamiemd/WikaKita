@@ -15,6 +15,7 @@ User.remove({}, function(err) {
 
 // read flashcards from json file
 const readCards = () => {
+  console.log("reading cards from db");
   if (!savedCards) {
     const contents = fs.readFileSync("./flashcards.json", "utf8");
     savedCards = JSON.parse(contents); // turns file into object
